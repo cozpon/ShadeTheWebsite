@@ -34,22 +34,25 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <IntlProvider locale="en">
-    <Router>
-      <div id="source">
+      <Router>
+        <div id="source">
+          <header id="global-nav-header">
           <MainHeader />
-            <div id="logo">
-              <Link to="/"><div></div></Link>
-      </div>
-        <Route exact path="/" component={App} />
-        <Route path="/login" component={LogIN} />
-        <Route path="/logout" component={LogOUT} />
-        <Route path="/forgot" component={Forgot}/>
-        <Route path="/users/:id" component={User}/>
-        <Route path="/reset/:token" component={Reset}/>
+            <Link to="/">
+              <div id="logo"></div>
+            </Link>
+          </header>
+          <Route exact path="/" component={App} />
+          <Route path="/login" component={LogIN} />
+          <Route path="/logout" component={LogOUT} />
+          <Route path="/forgot" component={Forgot}/>
+          <Route path="/users/:id" component={User}/>
+          <Route path="/reset/:token" component={Reset}/>
         </div>
-    </Router>
+      </Router>
     </IntlProvider>
   </Provider>,
-  document.getElementById('root')
-  );
+document.getElementById('root')
+);
+
 registerServiceWorker();

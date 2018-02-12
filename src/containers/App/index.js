@@ -4,16 +4,15 @@ import { loadMessages } from '../../actions/message.actions';
 
 
 class App extends Component {
-  // componentDidMount(){
-  //   this.props.loadMessages();
-  // }
+  componentDidMount(){
+    this.props.loadMessages();
+  }
 
   render() {
     return (
       <div id="app">
-
-        main app for SHADE baby!
-
+        main desktop react app for SHADE baby! <br /><br />
+        this gonna be where the feed is I guess?
       </div>
     );
   }
