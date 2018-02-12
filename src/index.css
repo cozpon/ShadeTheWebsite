@@ -2,4 +2,38 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: red;
+}
+
+#logo {
+  background-image: url("/images/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: center fixed;
+  height: 150px;
+  width: 300px;
+  margin: 0 auto;
+  div {
+  height: 150px;
+  width: 300px;
+  }
+}
+
+#global-nav-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.nav-links{
+  display: flex;
+  font-size: 20px;
+  justify-content: space-around;
+  padding: 1.5vw;
+}
+
+.unauth-nav-links{
+  display: flex;
+  font-size: 20px;
+  justify-content: space-around;
+  padding: 1.5vw;
 }
