@@ -5,6 +5,11 @@ body {
   color: red;
 }
 
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  color: #ff9800;
+}
+
 #logo {
   background-image: url("/images/logo.png");
   background-repeat: no-repeat;
@@ -36,4 +41,30 @@ body {
   font-size: 20px;
   justify-content: space-around;
   padding: 1.5vw;
+}
+
+
+/*----------------login-------*/
+#login-container {
+  position: relative;
+  text-align: center;
+}
+.login-form {
+  flex-direction: row wrap;
+  padding-bottom: 30px;
+  font-size: 65%;
+  margin-top: 30px;
+}
+.login-btn {
+  background-color: blue;
+  border: none;
+  padding: 5px 48px;
+}
+
+.forgot-password {
+  color: #FFFFFF;
+  flex-direction: row wrap;
+  position: relative;
+  font-size: 65%;
+  opacity: .7;
 }

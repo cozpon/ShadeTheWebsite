@@ -48,11 +48,11 @@ class Reset extends Component {
   render() {
     return(
       <div id="login-container">
-        <h2>reset Password</h2>
+        <h2>Reset Password</h2>
 
         <div>
           <center>
-            .: so u 4got ur password, no big deal :.
+             So u 4got ur password, it's no big deal
           </center>
         </div>
 
