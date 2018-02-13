@@ -3,14 +3,14 @@ import React from 'react';
 
 const Rumor = ({id, body, points, user, posted }) => {
   return (
-  <div>
-    <div className="rumor">
-      Someone heard that { user } { body }
+    <div>
+      <div className="rumor">
+        Someone heard that { user } { body }
+      </div>
+      <div className="rumor-credibility">
+        Rumor credibility rating: { points }
+      </div>
     </div>
-    <div className="rumor-credibility">
-      Rumor credibility rating: { points }
-    </div>
-  </div>
   )
 }
 

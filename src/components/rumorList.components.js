@@ -4,18 +4,24 @@ import Rumor from'./rumor.components';
 const RumorList = ({rumors}) => {
   console.log(rumors, "COMPONENTS");
   return (
-    <div className="rumor-list"> {
-      rumors.map(rumor => { //renders X amount of rumors
+
+    <div className="rumor-list">
+    {
+      rumors.map((rumor) => {
         return (
           <Rumor
           body={rumor.body}
-          user={rumor.user}
+          user={rumor.user.username}
           points={rumor.points}
-          key={rumor.id}/>
+          key={rumor.id}
+          />
         );
       })
+
     }
     </div>
+
+
   );
 }
 

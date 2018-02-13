@@ -18,8 +18,8 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.loadRumors, "RUMORS LOAD");
-    console.log(this.props.rumors, "RUMORS PROPS");
+    console.log('rumors', this.props.rumors);
+
     return (
 
       <div id="app">
