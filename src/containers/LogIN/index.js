@@ -12,13 +12,11 @@ class Login extends Component {
       username : '',
       password : '',
       redirect : false, // set initial state to false
-      error : ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
     this.handlePasswordInput = this.handlePasswordInput.bind(this);
-    this.handleBlurValidation = this.handleBlurValidation.bind(this);
   }
 
   handleSubmit(evt) {
@@ -53,24 +51,6 @@ class Login extends Component {
     });
   }
 
-  handleBlurValidation(evt) {
-    console.log(evt.target.name);
-    if (evt.target.name === "username" && this.state.username.length < 5){
-      let error = "username must be 5 characters";
-
-      this.setState({
-        error: error
-      });
-    }
-
-    if(evt.target.name === "password" ){
-      let error = "passwords must be at least 5 charaters";
-      this.setState({
-        error:error
-      });
-    }
-  }
-
   componentDidMount() {
     localStorage.clear();
   }
@@ -87,20 +67,14 @@ class Login extends Component {
 
         <div>
           <center>
-            .: welcome back :.
+             login 2 view ur shade account
           </center>
-        </div>
-
-        <div className="error-box">
-           {(this.state.error) &&
-          <p className="errors">{this.state.error}</p>
-        }
         </div>
 
         <div className="login-form">
           <form className="inner-form-container" onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-header">
-            Enter USERNAME -or- EMAIL
+            Login with either USERNAME or EMAIL
             </div>
          <div>
             <input
@@ -108,8 +82,7 @@ class Login extends Component {
               type="text"
               placeholder="username"
               defaultValue={this.state.username}
-              onChange={this.handleUsernameInput}
-              onBlur={this.handleBlurValidation} />
+              onChange={this.handleUsernameInput}/>
             </div>
 
             <div className="form-header">
@@ -121,8 +94,7 @@ class Login extends Component {
               type="password"
               placeholder="password"
               defaultValue={this.state.password}
-              onChange={this.handlePasswordInput}
-              onBlur={this.handleBlurValidation}/>
+              onChange={this.handlePasswordInput}/>
             </div>
             <br/>
             <button
