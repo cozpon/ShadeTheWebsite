@@ -64,7 +64,7 @@ class Reset extends Component {
          <div>
             <input
               name="password"
-              type="text"
+              type="password"
               placeholder="enter new password"
               defaultValue={this.state.password}
               onChange={this.handlePasswordInput} />
@@ -72,7 +72,7 @@ class Reset extends Component {
             <div>
             <input
               name="password"
-              type="text"
+              type="password"
               placeholder="re-enter new password"
               defaultValue={this.state.password}
               onChange={this.handlePasswordInput} />
