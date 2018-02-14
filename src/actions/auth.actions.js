@@ -8,7 +8,6 @@ const logout = `${url}auth/logout`;
 const forgot = `${url}auth/forgot`;
 const reset = `${url}auth/reset`;
 
-export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const FORGOT_PASS = 'FORGOT_PASS';
@@ -17,30 +16,11 @@ export const EDIT_USER = 'EDIT_USER';
 export const LOAD_USER = 'LOAD_USER';
 export const ERROR = 'ERROR';
 
-export const registerUser = (registerCreds) => {
-  return (dispatch) => {
-    return Axios.post(register, registerCreds)
-    .then(response => {
-        dispatch({
-          type: REGISTER_USER,
-          response: response.data
-       });
-    })
-    .catch(err => {
-      dispatch({
-        type: ERROR,
-        error: err
-      });
-    });
-  };
-};
-
-
 export const loginUser = (userCreds) => {
   return (dispatch) => {
     return Axios.post(login, userCreds)
     .then((response) => {
-      // console.log(response, "RESPONSE DATA");
+      console.log(response, "RESPONSE DATA");
       dispatch({
         type: LOGIN_USER,
         userDetails: response.data
@@ -76,7 +56,6 @@ export const forgotPassword = (userEmail) => {
 };
 
 
-//(gotta hash that password)
 export const resetPassword = (password) => {
   console.log(`${password.token}`, "UUUUEMAIL");
   return (dispatch) => {
