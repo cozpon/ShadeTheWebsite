@@ -17,6 +17,7 @@ import User from './containers/User';
 import Forgot from './containers/Forgot';
 import Reset from './containers/Reset';
 import LogIN from './containers/LogIN';
+import Register from './containers/Register';
 import LogOUT from './containers/LogOUT';
 
 import MainHeader from './components/header.components';
@@ -45,8 +46,9 @@ ReactDOM.render(
           <Route exact path="/" component={App} />
           <Route path="/login" component={LogIN} />
           <Route path="/logout" component={LogOUT} />
-          <Route path="/forgot" component={Forgot}/>
-          <Route path="/users/:id" component={User}/>
+          <Route path="/forgot" component={Forgot} />
+          <Route path="/register" component={Register} />
+          <Route path="/users/:id" component={User} />
           <Route path="/reset/:token" component={Reset}/>
         </div>
       </Router>

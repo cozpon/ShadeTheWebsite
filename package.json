@@ -87,7 +87,7 @@
     "type": "git",
     "url": "git+https://github.com/cozpon/shadethwebseite.git"
   },
-  "proxy": "http://localhost:8888",
+  "proxy": "http://localhost:8080/",
   "devDependencies": {
     "node-sass": "^4.6.0",
     "sass-loader": "^6.0.6",
