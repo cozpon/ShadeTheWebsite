@@ -19,6 +19,7 @@ import Reset from './containers/Reset';
 import LogIN from './containers/LogIN';
 import Register from './containers/Register';
 import LogOUT from './containers/LogOUT';
+import Edit from './containers/Edit';
 
 import MainHeader from './components/header.components';
 
@@ -49,6 +50,7 @@ ReactDOM.render(
           <Route path="/forgot" component={Forgot} />
           <Route path="/register" component={Register} />
           <Route path="/users/:id" component={User} />
+          <Route path="/edit/:id" component={Edit} />
           <Route path="/reset/:token" component={Reset}/>
         </div>
       </Router>
