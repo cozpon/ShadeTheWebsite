@@ -7,7 +7,6 @@ import { forgotPassword } from '../../actions/auth.actions';
 class Forgot extends Component {
   constructor() {
     super();
-
     this.state = {
       email : '',
       redirect : false, // set initial state to false
