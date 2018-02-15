@@ -10,7 +10,7 @@ const db = require('./models')
 const routes = require('./routes');
 
 //const PORT = require(`../config/${process.env.NODE_ENV}`).PORT;
-const PORT = process.env.PORT || 8888;
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(compression());
@@ -26,15 +26,18 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 app.use('/api', routes);
+
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
+//   // res.header('Access-Control-Allow-Credentials', 'true');
+//   //res.header("Access-Control-Allow-Origin", "*");
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+//   //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//   next();
+// });
+
+
 
 app.listen(PORT, () => {
   db.sequelize.sync({ force: false });
