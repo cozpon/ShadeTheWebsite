@@ -71,7 +71,6 @@ export const loadUser = (id) => {
 }
 
 export const forgotPassword = (userEmail) => {
-  console.log(userEmail, "UUUUEMAIL");
   return (dispatch) => {
     return Axios.post(forgot, userEmail)
     .then((response) => {
@@ -92,7 +91,6 @@ export const forgotPassword = (userEmail) => {
 
 
 export const resetPassword = (password) => {
-  console.log(`${password.token}`, "UUUUEMAIL");
   return (dispatch) => {
     return Axios.put(`${reset}/${password.token}`, password)
     .then((response) => {
