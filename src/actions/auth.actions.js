@@ -8,13 +8,15 @@ const login = '/api/auth/login';
 const logout = `${url}auth/logout`;
 const forgot = `${url}auth/forgot`;
 const reset = `${url}auth/reset`;
+const edit = `${url}auth/edit`;
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const FORGOT_PASS = 'FORGOT_PASS';
 export const RESET_PASS = 'RESET_PASS';
-export const EDIT_USER = 'EDIT_USER';
+export const EDIT_PASSWORD = 'EDIT_PASSWORD';
+export const EDIT_EMAIL = 'EDIT_EMAIL';
 export const LOAD_USER = 'LOAD_USER';
 export const ERROR = 'ERROR';
 
@@ -57,6 +59,17 @@ export const loginUser = (userCreds) => {
   };
 };
 
+export const loadUser = (id) => {
+  return function(dispatch) {
+    return Axios.get(`${url}users/${id}`).then((user) => {
+      dispatch({
+        type: LOAD_USER,
+        user: user.data
+      });
+    });
+  }
+}
+
 export const forgotPassword = (userEmail) => {
   console.log(userEmail, "UUUUEMAIL");
   return (dispatch) => {
@@ -98,28 +111,34 @@ export const resetPassword = (password) => {
   };
 };
 
-export const loadUser = (id) => {
-  return function(dispatch) {
-    return Axios.get(`${url}users/${id}`).then((user) => {
-      dispatch({
-        type: LOAD_USER,
-        user: user.data
-      });
-    });
-  }
-}
 
-export const editUser = (user) => {
-  return function(dispatch) {
-    return Axios.put(`${url}users/${user.id}`).then((editedUser) => {
+export const editPassword = (user) => {
+  console.log(user.password, "EDIT user");
+  return (dispatch) => {
+    return Axios.put(`${edit}/${user}`, user)
+    .then((editedUser) => {
+      console.log(editedUser, "DATA)#@#");
       dispatch({
-        type: EDIT_USER,
+        type: EDIT_PASSWORD,
         user: editedUser.data
       });
     });
   }
 }
 
+export const editEmail = (user) => {
+  console.log(user.email, "EDIT user");
+  return (dispatch) => {
+    return Axios.put(`${edit}/${user}`, user)
+    .then((editedUser) => {
+      console.log(editedUser, "DATA)#@#");
+      dispatch({
+        type: EDIT_EMAIL,
+        user: editedUser.data
+      });
+    });
+  }
+}
 export const logoutUser = () => {
   return (dispatch) => {
     return Axios.get(logout)

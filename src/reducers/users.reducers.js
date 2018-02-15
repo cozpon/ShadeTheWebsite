@@ -2,7 +2,8 @@ import { LOGIN_USER,
          LOGOUT_USER,
          REGISTER_USER,
          LOAD_USER,
-         EDIT_USER
+         EDIT_EMAIL,
+         EDIT_PASSWORD
        } from '../actions/auth.actions';
 
 const initialState = [];
@@ -39,7 +40,10 @@ const singleUser = (state = initialState, action) => {
     case LOAD_USER:
       return Object.assign({}, state, action.user);
 
-    case EDIT_USER:
+    case EDIT_PASSWORD:
+      return Object.assign({}, state, action.user);
+
+    case EDIT_EMAIL:
       return Object.assign({}, state, action.user);
 
     default:
