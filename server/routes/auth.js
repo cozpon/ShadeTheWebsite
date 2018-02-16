@@ -149,30 +149,70 @@ router.put('/reset/:token', (req, res) => {
   });
 });
 
+    //bcrypt.compare(req.body.oldpassword, user.password)
+    // compare old password with databased HASH pass.
+    // if the passwords don't match, return error
+    //req.flash("error", "Password doesn't match, did u forget it?");
+
 //edit password
-router.put('/edit/:id', (req, res) => {
+router.put('/editpass/:id', (req, res) => {
+  return User.findOne({
+    where : { id : req.body.id }
+  })
+  .then((user) => {
+    if(!user){
+    return console.log("error");
+    }else{
+      bcrypt.compare(req.body.oldpassword, user.password)
+      .then(yes => {
+      if (yes) {
+        bcrypt.genSalt(saltRounds, (err, salt) => {
+          bcrypt.hash(req.body.password, salt, (err, hash) => {
+            user.update({ // hash new password and stick it into DB
+              password: hash
+            })
+            .then(newPassword => {
+              console.log('Password updated');
+              return res.json({
+                success : true
+              });
+            });
+          });
+        });
+      }else {
+        return console.log("error");
+        }
+      })
+      .catch((err) => {
+        console.log("error", err);
+        return res.json({
+          error : 'Oh no! Something went wrong!'
+        });
+      });
+    }
+  })
+});
+
+//edit email
+router.put('/editemail/:id', (req, res) => {
+  console.log(req.body, "user edit email");
   return User.findOne({
     where : { id : req.body.id }
   })
   .then(user => {
     bcrypt.compare(req.body.oldpassword, user.password)
-    // compare old password with databased HASH pass.
     if (!user) { // if the passwords don't match, return error
     //req.flash("error", "Password doesn't match, did u forget it?");
     return console.log("error");
     }
     else {
-      bcrypt.genSalt(saltRounds, (err, salt) => {
-        bcrypt.hash(req.body.password, salt, (err, hash) => {
-          user.update({ // hash new password and stick it into DB
-            password: hash
-          })
-          .then(newPassword => {
-            console.log('Password updated');
-            return res.json({
-              success : true
-            });
-          });
+      user.update({
+        email: req.body.email
+      })
+      .then(newEmail => {
+        console.log('email changed');
+        return res.json({
+          success : true
         });
       });
     }

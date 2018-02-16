@@ -15,8 +15,12 @@ class User extends Component {
             Hello, { localStorage.username }!
           </div>
           <div id="user-edit">
-            want 2 edit ur profile, daddio?
-               <Link to={`/edit/${localStorage.userId}`}>Edit Password/Email</Link>
+            want 2 edit ur profile, daddio? <br /> <br />
+               <Link to={`/editpass/${localStorage.userId}`}>change ur Password</Link>
+               <br />
+               -_ or _-
+               <br />
+               <Link to={`/editemail/${localStorage.userId}`}>change ur email</Link>
           </div>
         </div>
       );

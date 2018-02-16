@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { editPassword } from '../../actions/auth.actions';
 import { editEmail } from '../../actions/auth.actions';
 
-class Reset extends Component {
+class EditPassword extends Component {
   constructor() {
     super();
 
@@ -100,68 +100,30 @@ class Reset extends Component {
             <div className="form-header">
             enter a new password in below
             </div>
-         <div>
+          <div>
             <input
               name="password"
               type="password"
               placeholder="enter new password"
               defaultValue={this.state.password}
               onChange={this.handlePasswordInput} />
-            </div>
-            <div className="form-header">
+          </div>
+          <div className="form-header">
             re-enter your new password please
-            </div>
-            <div>
+          </div>
+          <div>
             <input
               name="password"
               type="password"
               placeholder="re-enter new password"
               defaultValue={this.state.password}
               onChange={this.handlePasswordInput} />
-            </div>
+          </div>
             <button
               className="login-btn"
               type="submit"
               onClick={this.handlePasswordChange}>
               Change Ur Password
-            </button>
-          </form>
-        </div>
-
-        <h2>Change Email Address</h2>
-
-        <div>
-          <center>
-             or u want 2 change ur Email Address with us
-          </center>
-        </div>
-
-        <div className="login-form">
-          <form className="inner-form-container" onSubmit={this.handleEmailChange.bind(this)}>
-            <div className="form-header">
-            just enter a new email addy in below
-            </div>
-         <div>
-            <input
-              name="email"
-              type="text"
-              placeholder="enter new email addy"
-              defaultValue={this.state.email}
-              onChange={this.handleEmailInput} />
-            </div>
-            <div>
-            <input
-              name="email"
-              type="text"
-              placeholder="re-enter new email addy"
-              defaultValue={this.state.email}
-              onChange={this.handleEmailInput} />
-            </div>
-            <button
-              className="login-btn"
-              type="submit"
-              onClick={this.handleEmailChange}>
-              Change Ur Email
             </button>
           </form>
         </div>
@@ -199,4 +161,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Reset);
+)(EditPassword);
