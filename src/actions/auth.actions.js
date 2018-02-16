@@ -3,12 +3,13 @@ import Axios from 'axios';
 import { url } from '../lib/url';
 
 
-const register = '/api/auth/register';
-const login = '/api/auth/login';
+const register = `${url}auth/register`;
+const login = `${url}auth/login`;
 const logout = `${url}auth/logout`;
 const forgot = `${url}auth/forgot`;
 const reset = `${url}auth/reset`;
-const edit = `${url}auth/edit`;
+const editpass = `${url}auth/editpass`;
+const editemail = `${url}auth/editemail`;
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
@@ -113,7 +114,7 @@ export const resetPassword = (password) => {
 export const editPassword = (user) => {
   console.log(user.password, "EDIT user");
   return (dispatch) => {
-    return Axios.put(`${edit}/${user}`, user)
+    return Axios.put(`${editpass}/${user}`, user)
     .then((editedUser) => {
       console.log(editedUser, "DATA)#@#");
       dispatch({
@@ -127,7 +128,7 @@ export const editPassword = (user) => {
 export const editEmail = (user) => {
   console.log(user.email, "EDIT user");
   return (dispatch) => {
-    return Axios.put(`${edit}/${user}`, user)
+    return Axios.put(`${editemail}/${user}`, user)
     .then((editedUser) => {
       console.log(editedUser, "DATA)#@#");
       dispatch({

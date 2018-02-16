@@ -149,40 +149,80 @@ router.put('/reset/:token', (req, res) => {
   });
 });
 
+
 //edit password
-router.put('/edit/:id', (req, res) => {
+router.put('/editpass/:id', (req, res) => {
   return User.findOne({
     where : { id : req.body.id }
   })
   .then(user => {
-    bcrypt.compare(req.body.oldpassword, user.password)
-    // compare old password with databased HASH pass.
-    if (!user) { // if the passwords don't match, return error
-    //req.flash("error", "Password doesn't match, did u forget it?");
+    if(!user){
     return console.log("error");
-    }
-    else {
-      bcrypt.genSalt(saltRounds, (err, salt) => {
-        bcrypt.hash(req.body.password, salt, (err, hash) => {
-          user.update({ // hash new password and stick it into DB
-            password: hash
-          })
-          .then(newPassword => {
-            console.log('Password updated');
-            return res.json({
-              success : true
+    }else{
+      bcrypt.compare(req.body.oldpassword, user.password)
+      .then(yes => { // compare old password with databased HASH pass.
+      if (yes) { // if passwords match, return 'yes' and continue
+        bcrypt.genSalt(saltRounds, (err, salt) => {
+          bcrypt.hash(req.body.password, salt, (err, hash) => {
+            user.update({ // hash new password and stick it into DB
+              password : hash
+            })
+            .then(newPassword => {
+              console.log('Password updated');
+              return res.json({
+                success : true
+              });
             });
           });
+        });
+      }else { // if the passwords don't match, return error
+        return console.log("error");
+        }
+      })
+      .catch(err => {
+        console.log("error", err);
+        return res.json({
+          error : 'Oh no! Something went wrong!'
         });
       });
     }
   })
-  .catch((err) => {
-    console.log("error", err);
-    return res.json({
-      error : 'Oh no! Something went wrong!'
-    });
-  });
-})
+});
+
+//edit email
+router.put('/editemail/:id', (req, res) => {
+  console.log(req.body, "user edit email");
+  return User.findOne({
+    where : { id : req.body.id }
+  })
+  .then(user => {
+    if(!user){
+    return console.log("error");
+    }else{
+      bcrypt.compare(req.body.oldpassword, user.password)
+      .then(yes => { // compare old password with databased HASH pass.
+      if (yes) {
+        user.update({
+        email : req.body.email
+        })
+        .then(newEmail => {
+        console.log('email changed');
+        return res.json({
+          success : true
+        });
+      });
+      }else { // if the passwords don't match, return error
+        return console.log("error");
+        }
+      })
+      .catch((err) => {
+        console.log("error", err);
+        return res.json({
+          error : 'Oh no! Something went wrong!'
+        });
+      });
+    }
+  })
+});
 
 module.exports = router;
