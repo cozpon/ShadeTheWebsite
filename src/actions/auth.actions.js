@@ -72,6 +72,7 @@ export const loadUser = (id) => {
 }
 
 export const forgotPassword = (userEmail) => {
+  console.log(userEmail);
   return (dispatch) => {
     return Axios.post(forgot, userEmail)
     .then((response) => {
