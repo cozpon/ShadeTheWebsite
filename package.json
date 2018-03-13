@@ -59,6 +59,8 @@
     "react": "^16.2.0",
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.2.0",
+    "react-form-with-constraints": "^0.7.0",
+    "react-form-with-constraints-bootstrap4": "^0.7.1",
     "react-intl": "^2.4.0",
     "react-moment": "^0.6.8",
     "react-redux": "^5.0.6",

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { loginUser } from '../../actions/auth.actions';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
 
 class Login extends Component {
   constructor() {
@@ -33,21 +34,26 @@ class Login extends Component {
       username : '',
       password : '',
     });
+    if(!localStorage.loggedIn) {
+      toast.error(`Oops, wrong email or password`,
+    {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 5000,
+    });
+  }
   }
 
   handleUsernameInput(evt) {
     this.setState(
     {
-      username : evt.target.value,
-      error : ''
+      username : evt.target.value
     });
   }
 
   handlePasswordInput(evt) {
     this.setState(
     {
-      password : evt.target.value,
-      error : ''
+      password : evt.target.value
     });
   }
 
@@ -60,7 +66,6 @@ class Login extends Component {
     if(localStorage.loggedIn) {
       return <Redirect to={`/users/${localStorage.userId}`}/>
     }
-
     return(
       <div id="login-container">
         <h2>Login</h2>
@@ -70,7 +75,7 @@ class Login extends Component {
              login 2 view ur shade account
           </center>
         </div>
-
+        <ToastContainer />
         <div className="login-form">
           <form className="inner-form-container" onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-header">

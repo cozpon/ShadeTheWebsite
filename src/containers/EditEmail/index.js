@@ -57,7 +57,7 @@ class EditEmail extends Component {
 
         <div>
           <center>
-               <h2>Change Email Address</h2>
+            <h2>Change Email Address</h2>
           </center>
         </div>
 

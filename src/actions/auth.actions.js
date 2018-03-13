@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 import { url } from '../lib/url';
-
+import { ToastContainer, toast } from "react-toastify";
 
 const register = `${url}auth/register`;
 const login = `${url}auth/login`;
@@ -46,12 +46,14 @@ export const loginUser = (userCreds) => {
     return Axios.post(login, userCreds)
     .then((response) => {
       console.log(response, "RESPONSE DATA");
+      console.log(userCreds, "USER CREDS");
       dispatch({
         type: LOGIN_USER,
         userDetails: response.data
       });
     })
     .catch((err) => {
+    console.log(err, "ERROR DATA");
       dispatch({
         type: ERROR,
         error: 'invalid user name or password'
