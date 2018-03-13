@@ -9,7 +9,8 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      rumors: [] //initial state
+      rumors: [],
+      messages: [] //initial state
     }
   }
   componentDidMount(){
@@ -18,6 +19,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('rumors', this.props.rumors);
     console.log('rumors', this.props.rumors);
 
     return (
@@ -32,6 +34,11 @@ class App extends Component {
       <div className="rumor-list">
         rumors
           <RumorList rumors={this.props.rumors}/>
+      </div>
+
+      <div className="message-list">
+        messages
+          <Messages messages={this.props.messages}/>
       </div>
      </div>
     );

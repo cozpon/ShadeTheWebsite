@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { forgotPassword } from '../../actions/auth.actions';
 import { ToastContainer, toast } from "react-toastify";
-import Login from '../LogIN';
-
 
 class Forgot extends Component {
   constructor() {
@@ -12,7 +10,7 @@ class Forgot extends Component {
     this.state = {
       email : '',
       redirectToLogin : false,
-      beginCountdown: false, // set initial state to false
+      beginCountdown : false, // set initial state to false
     };
 
     this.handlePasswordRecovery = this.handlePasswordRecovery.bind(this);
@@ -30,7 +28,7 @@ class Forgot extends Component {
       beginCountdown: true,
     });
     toast.success(`An email has been sent to ${this.state.email}!
-    \n\n \n\n\nCheck your spam folder if you don't immediately see the email!`,
+    Check your spam folder if you don't immediately see the email!`,
     {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 5000,
@@ -50,14 +48,13 @@ class Forgot extends Component {
 
   render() {
     const { beginCountdown, redirectToLogin } = this.state;
-    console.log(this.state);
     if(beginCountdown) { // after Send Email button is pushed, beginCountdown set to true
         setTimeout(() => { // this delays setting State of redirect to true
           this.setState({redirectToLogin: true})
         }, 5500) // 5 seconds
       }
 
-    if(redirectToLogin) { return( <Redirect to={`/login`}/> ) }
+    if(redirectToLogin) { return( <Redirect to={`/`}/> ) }
     // after delay of 5 seconds, this activates and redirects you to login
     // very hacky code, but it works!
 

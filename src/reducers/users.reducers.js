@@ -13,8 +13,8 @@ const singleUser = (state = initialState, action) => {
     case LOGIN_USER:
       const userDetails = action.userDetails;
       let newState = {};
-      console.log(userDetails);
-      if (userDetails.success) {
+      console.log(userDetails, "USERDETILS");
+      if (userDetails.success) { // if user login successful
         newState = action.userDetails;
 
         localStorage.setItem('loggedIn', true);
@@ -23,6 +23,7 @@ const singleUser = (state = initialState, action) => {
         localStorage.setItem('role', userDetails.role);
 
       } else {
+        console.log(userDetails, "FAILURE");
         newState = initialState;
       }
 

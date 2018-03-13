@@ -17,7 +17,7 @@ import User from './containers/User';
 import Forgot from './containers/Forgot';
 import Reset from './containers/Reset';
 import LogIN from './containers/LogIN';
-import Register from './containers/Register';
+import Register from './containers/NewRegister';
 import LogOUT from './containers/LogOUT';
 import EditPassword from './containers/EditPassword';
 import EditEmail from './containers/EditEmail';
