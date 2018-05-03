@@ -14,12 +14,12 @@ const rumorList = (state = initialState, action) => {
       return [ ...state, action.rumor ];
     case EDIT_RUMOR:
       let index = state.findIndex((rumor) => {
-        return rumor.id === action.rumor.id
+        return rumor.id === action.rumor.id;
       });
       return [ ...(state.slice(0, index)), action.rumor, ...(state.slice((index + 1), state.length)) ];
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default rumorList;

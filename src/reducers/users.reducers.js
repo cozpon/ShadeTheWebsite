@@ -13,7 +13,6 @@ const singleUser = (state = initialState, action) => {
     case LOGIN_USER:
       const userDetails = action.userDetails;
       let newState = {};
-      console.log(userDetails, "USERDETILS");
       if (userDetails.success) { // if user login successful
         newState = action.userDetails;
 
@@ -42,9 +41,15 @@ const singleUser = (state = initialState, action) => {
       return Object.assign({}, state, action.user);
 
     case EDIT_PASSWORD:
+      if (action.user.success) {
+        localStorage.setItem('passwordChange', true);
+      }
       return Object.assign({}, state, action.user);
 
     case EDIT_EMAIL:
+      if (action.user.success) {
+        localStorage.setItem('emailChange', true);
+      }
       return Object.assign({}, state, action.user);
 
     default:

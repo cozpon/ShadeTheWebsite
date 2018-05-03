@@ -22,7 +22,9 @@ class Login extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-
+    this.setState({
+      redirect : true
+    });
     let loginCreds = {
       username : this.state.username,
       password : this.state.password
@@ -30,17 +32,14 @@ class Login extends Component {
 
     this.props.loginUser(loginCreds);
 
-    this.setState({
-      username : '',
-      password : '',
-    });
-    if(!localStorage.loggedIn) {
-      toast.error(`Oops, wrong email or password`,
-    {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 5000,
-    });
-  }
+    console.log(this.props, "props user");
+    if(!this.props.singleUser.success) {
+      toast.error(`Oops! Wrong Password, daddio!`,
+      {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 5000,
+      });
+    }
   }
 
   handleUsernameInput(evt) {
@@ -63,9 +62,12 @@ class Login extends Component {
 
   render() {
     // loggedIn is a string so its basically checking if anything exists there
-    if(localStorage.loggedIn) {
-      return <Redirect to={`/users/${localStorage.userId}`}/>
+    if(this.props.singleUser.success) {
+      return (
+        <Redirect to={`/users/${localStorage.userId}`} />
+      )
     }
+
     return(
       <div id="login-container">
         <h2>Login</h2>
@@ -120,6 +122,7 @@ class Login extends Component {
 
 // maps store state to local props
 const mapStateToProps = (state) => {
+  console.log(state.singleUser);
   return {
     singleUser : state.singleUser
   };
@@ -127,7 +130,7 @@ const mapStateToProps = (state) => {
 
 //maps store dispatch to local props
 const mapDispatchToProps = (dispatch) => {
-  return{
+  return {
     loginUser: (loginCreds) => {
       dispatch(loginUser(loginCreds));
     }

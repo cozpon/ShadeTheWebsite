@@ -45,15 +45,12 @@ export const loginUser = (userCreds) => {
   return (dispatch) => {
     return Axios.post(login, userCreds)
     .then((response) => {
-      console.log(response, "RESPONSE DATA");
-      console.log(userCreds, "USER CREDS");
       dispatch({
         type: LOGIN_USER,
         userDetails: response.data
       });
     })
     .catch((err) => {
-    console.log(err, "ERROR DATA");
       dispatch({
         type: ERROR,
         error: 'invalid user name or password'
@@ -70,8 +67,8 @@ export const loadUser = (id) => {
         user: user.data
       });
     });
-  }
-}
+  };
+};
 
 export const forgotPassword = (userEmail) => {
   console.log(userEmail);
@@ -115,7 +112,6 @@ export const resetPassword = (password) => {
 
 
 export const editPassword = (user) => {
-  console.log(user.password, "EDIT user");
   return (dispatch) => {
     return Axios.put(`${editpass}/${user}`, user)
     .then((editedUser) => {
@@ -125,22 +121,21 @@ export const editPassword = (user) => {
         user: editedUser.data
       });
     });
-  }
-}
+  };
+};
 
 export const editEmail = (user) => {
-  console.log(user.email, "EDIT user");
   return (dispatch) => {
     return Axios.put(`${editemail}/${user}`, user)
     .then((editedUser) => {
-      console.log(editedUser, "DATA)#@#");
       dispatch({
         type: EDIT_EMAIL,
         user: editedUser.data
       });
     });
-  }
-}
+  };
+};
+
 export const logoutUser = () => {
   return (dispatch) => {
     return Axios.get(logout)
