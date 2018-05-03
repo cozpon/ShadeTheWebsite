@@ -46,15 +46,19 @@ class EditEmail extends Component {
     });
   }
 
-  // componentDidMount() {
-  //   localStorage.clear();
-  // }
+  componentWillMount() {
+    localStorage.removeItem('emailChange');
+  }
 
   render() {
+    if( localStorage.emailChange ) {
+      return (
+      <Redirect to={`/users/${localStorage.userId}`} />
+      )
+    }
     if( localStorage.userId === this.props.match.params.id ){
       return(
       <div id="login-container">
-
         <div>
           <center>
             <h2>Change Email Address</h2>

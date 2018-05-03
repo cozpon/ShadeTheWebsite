@@ -6,9 +6,13 @@ body {
   background-color: #E9EADF;
 }
 
-a:hover, a:visited, a:link, a:active {
+a:visited, a:link, a:active {
   text-decoration: none;
   color: #ff9800;
+}
+a:hover {
+  text-decoration: none;
+  color: red;
 }
 
 #logo {
@@ -68,4 +72,14 @@ a:hover, a:visited, a:link, a:active {
   position: relative;
   font-size: 65%;
   opacity: .7;
+}
+#user-welcome {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 40px;
+  color: #666;
+}
+#user-edit {
+  text-align: center;
+  font-size: 20px;
 }

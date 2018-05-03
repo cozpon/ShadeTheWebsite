@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { editPassword } from '../../actions/auth.actions';
 import { editEmail } from '../../actions/auth.actions';
+import { ToastContainer, toast } from "react-toastify";
 
 class EditPassword extends Component {
   constructor() {
@@ -30,11 +31,13 @@ class EditPassword extends Component {
       password : this.state.password,
       id : this.props.match.params.id
     };
-    this.props.editPassword(newPassword);
 
+    this.props.editPassword(newPassword);
+    console.log(newPassword);
     this.setState({
       password : '',
-      oldpassword : ''
+      oldpassword : '',
+      redirect : true
     });
   }
 
@@ -70,11 +73,12 @@ class EditPassword extends Component {
     });
   }
 
-  // componentDidMount() {
-  //   localStorage.clear();
-  // }
-
   render() {
+    if( localStorage.passwordChange ) {
+      return (
+      <Redirect to={`/users/${localStorage.userId}`} />
+      )
+    }
     if( localStorage.userId === this.props.match.params.id ){
       return(
       <div id="login-container">
@@ -90,6 +94,7 @@ class EditPassword extends Component {
         <div className="form-header">
         enter your current password
         </div>
+         <ToastContainer />
           <form className="inner-form-container" onSubmit={this.handlePasswordChange.bind(this)}>
             <input
               name="oldpassword"
@@ -139,7 +144,6 @@ class EditPassword extends Component {
 
 // maps store state to local props
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     singleUser : state.singleUser
   };

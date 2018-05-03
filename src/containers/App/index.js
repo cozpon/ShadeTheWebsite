@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       rumors: [],
       messages: [] //initial state
-    }
+    };
   }
   componentDidMount(){
     this.props.loadMessages();

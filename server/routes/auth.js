@@ -20,9 +20,10 @@ router.post('/login',
   return res.json({
     id: req.user.id,
     username: req.user.username,
-    success: true
+    success: true,
   });
 });
+
 
 router.get('/logout', (req, res) => {
   req.logout();
@@ -50,6 +51,7 @@ router.post('/register', (req, res) => {
               email: email
             })
             .then((user) => {
+              console.log('success');
               return res.json({
                 username: user.username,
                 password: user.password,
