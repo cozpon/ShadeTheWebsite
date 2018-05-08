@@ -7,6 +7,8 @@ const MainHeader = () => {
       <div className="unauth-nav-links">
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
+        <Link to="/termsofservice">Terms of Service</Link>
+        <Link to="/contact">Contact</Link>
       </div>
     )
   }else{
@@ -16,6 +18,8 @@ const MainHeader = () => {
           <Link to="/">Home</Link>
           <Link to={`/users/${localStorage.userId}`}>{localStorage.username}</Link>
           <Link to="/logout">Logout</Link>
+          <Link to="/termsofservice">Terms of Service</Link>
+          <Link to="/contact">Contact</Link>
         </div>
       </div>
     );

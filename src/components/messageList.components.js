@@ -8,6 +8,7 @@ const MessageList = ({messages}) => {
     <div className="message-list">
     {
       messages.map((message) => {
+        console.log(message.media);
         return (
           <Message
           body={message.body}
