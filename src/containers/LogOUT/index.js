@@ -31,21 +31,20 @@ class Logout extends Component {
       username : '',
       password : '',
     });
-
-  }
-
-  componentDidMount(){
     localStorage.clear();
-    this.props.logoutUser();
   }
+
+  // componentDidMount(){
+  //   localStorage.clear();
+  //   this.props.logoutUser();
+  // }
 
   render(){
     if(!localStorage.loggedIn) {
-      return <Redirect to="/"/>
+      return <Redirect to="/" />
     }
     return (
       <div id="logout-container">
-
 
         <h2>See you later, alligator!</h2>
 
@@ -55,7 +54,7 @@ class Logout extends Component {
             className="logout-btn"
             type="submit"
             onClick={this.handleSubmit}>
-            Take Me Back Home
+            Log Me Out!
           </button>
 
         </form>

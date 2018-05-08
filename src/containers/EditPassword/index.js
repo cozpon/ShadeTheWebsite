@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { editPassword } from '../../actions/auth.actions';
 import { editEmail } from '../../actions/auth.actions';
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 
 class EditPassword extends Component {
   constructor() {
@@ -33,8 +33,8 @@ class EditPassword extends Component {
     };
 
     this.props.editPassword(newPassword);
-    console.log(newPassword);
     this.setState({
+
       password : '',
       oldpassword : '',
       redirect : true
@@ -94,7 +94,6 @@ class EditPassword extends Component {
         <div className="form-header">
         enter your current password
         </div>
-         <ToastContainer />
           <form className="inner-form-container" onSubmit={this.handlePasswordChange.bind(this)}>
             <input
               name="oldpassword"

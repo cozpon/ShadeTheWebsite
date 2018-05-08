@@ -15,8 +15,8 @@ export const loadRumors = () => {
         rumors: rumors.data
       });
     });
-  }
-}
+  };
+};
 
 export const addRumor = (rumor) => {
   return function(dispatch){
@@ -27,8 +27,8 @@ export const addRumor = (rumor) => {
         rumor: newRumor.data
       });
     });
-  }
-}
+  };
+};
 
 export const editRumor = (newInfo) => {
   return function(dispatch){
@@ -40,5 +40,5 @@ export const editRumor = (newInfo) => {
         rumor: editedRumor.data
       });
     });
-  }
-}
+  };
+};

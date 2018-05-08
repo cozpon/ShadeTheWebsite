@@ -15,6 +15,10 @@ a:hover {
   color: red;
 }
 
+h2 {
+  font-size: 80px;
+}
+
 #logo {
   background-image: url("/images/logo.png");
   background-repeat: no-repeat;
@@ -53,25 +57,33 @@ a:hover {
 #login-container {
   position: relative;
   text-align: center;
+  margin-top: -30px;
 }
 .login-form {
   flex-direction: row wrap;
   padding-bottom: 30px;
-  font-size: 65%;
+  font-size: 85%;
   margin-top: 30px;
 }
 .login-btn {
   background-color: blue;
   border: none;
   padding: 5px 48px;
+  font-size: 120%;
+}
+
+.form-header {
+  font-size: 17px;
+  padding: 10px;
+  color: #666;
 }
 
 .forgot-password {
   color: #FFFFFF;
   flex-direction: row wrap;
   position: relative;
-  font-size: 65%;
-  opacity: .7;
+  font-size: 95%;
+  opacity: .8;
 }
 #user-welcome {
   text-align: center;

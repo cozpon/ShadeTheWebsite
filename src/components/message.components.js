@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import { flagMessage } from '../actions/message.actions';
 
@@ -7,9 +6,6 @@ class Message extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      deleteModalVisible: false,
-      flagModalVisible: false,
-      blur: false
     }
   }
 

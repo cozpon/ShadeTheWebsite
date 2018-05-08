@@ -31,15 +31,15 @@ class Login extends Component {
     };
 
     this.props.loginUser(loginCreds);
-
-    console.log(this.props, "props user");
-    if(!this.props.singleUser.success) {
-      toast.error(`Oops! Wrong Password, daddio!`,
+    if(localStorage.error) {
+      toast.error(`Oops! Wrong Password or Username, daddio!`,
       {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 5000,
       });
     }
+    localStorage.clear();
+    console.log(this.props, "props user");
   }
 
   handleUsernameInput(evt) {
@@ -56,18 +56,21 @@ class Login extends Component {
     });
   }
 
-  componentDidMount() {
-    localStorage.clear();
-  }
-
   render() {
     // loggedIn is a string so its basically checking if anything exists there
-    if(this.props.singleUser.success) {
+    if(this.props.singleUser.success && localStorage.userId) {
       return (
         <Redirect to={`/users/${localStorage.userId}`} />
       )
     }
-
+    if(localStorage.error) {
+      toast.error(`Oops! Wrong Password or Username, daddio!`,
+      {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 5000,
+      });
+      localStorage.clear();
+    }
     return(
       <div id="login-container">
         <h2>Login</h2>
@@ -122,7 +125,6 @@ class Login extends Component {
 
 // maps store state to local props
 const mapStateToProps = (state) => {
-  console.log(state.singleUser);
   return {
     singleUser : state.singleUser
   };
