@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 import { url } from '../lib/url';
-import { ToastContainer, toast } from "react-toastify";
+
 
 const register = `${url}auth/register`;
 const login = `${url}auth/login`;
@@ -51,6 +51,7 @@ export const loginUser = (userCreds) => {
       });
     })
     .catch((err) => {
+      console.log("err");
       dispatch({
         type: ERROR,
         error: 'invalid user name or password'

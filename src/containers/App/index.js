@@ -20,7 +20,7 @@ class App extends Component {
 
   render() {
     console.log('rumors', this.props.rumors);
-    console.log('rumors', this.props.rumors);
+    console.log('messages', this.props.messages);
 
     return (
 
@@ -34,6 +34,7 @@ class App extends Component {
       <div className="rumor-list">
         rumors
           <RumorList rumors={this.props.rumors}/>
+
       </div>
 
       <div className="message-list">

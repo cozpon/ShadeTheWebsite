@@ -3,16 +3,20 @@ import { LOGIN_USER,
          REGISTER_USER,
          LOAD_USER,
          EDIT_EMAIL,
-         EDIT_PASSWORD
+         EDIT_PASSWORD,
+         ERROR
        } from '../actions/auth.actions';
 
 const initialState = [];
 
 const singleUser = (state = initialState, action) => {
   switch (action.type){
+
     case LOGIN_USER:
+      console.log(action, "ACTION");
       const userDetails = action.userDetails;
       let newState = {};
+      console.log(userDetails, "REDUCERS");
       if (userDetails.success) { // if user login successful
         newState = action.userDetails;
 
@@ -22,7 +26,7 @@ const singleUser = (state = initialState, action) => {
         localStorage.setItem('role', userDetails.role);
 
       } else {
-        console.log(userDetails, "FAILURE");
+        console.log(action, "FAILURE");
         newState = initialState;
       }
 
@@ -51,6 +55,10 @@ const singleUser = (state = initialState, action) => {
         localStorage.setItem('emailChange', true);
       }
       return Object.assign({}, state, action.user);
+
+    case ERROR:
+      localStorage.setItem('error', true);
+      return Object.assign({}, state, action.type);
 
     default:
       return state;

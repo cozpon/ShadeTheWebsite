@@ -21,6 +21,8 @@ import Register from './containers/NewRegister';
 import LogOUT from './containers/LogOUT';
 import EditPassword from './containers/EditPassword';
 import EditEmail from './containers/EditEmail';
+import termsOfService from './containers/TermsofService';
+import Contact from './containers/Contact';
 
 import MainHeader from './components/header.components';
 
@@ -54,6 +56,8 @@ ReactDOM.render(
           <Route path="/editpass/:id" component={EditPassword} />
           <Route path="/editemail/:id" component={EditEmail} />
           <Route path="/reset/:token" component={Reset}/>
+          <Route path="/termsofservice" component={termsOfService} />
+          <Route path="/contact" component={Contact} />
         </div>
       </Router>
     </IntlProvider>
