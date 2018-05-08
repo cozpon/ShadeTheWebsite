@@ -4,9 +4,9 @@ import { flagMessage } from '../actions/message.actions';
 
 class Message extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-    }
+    };
   }
 
   render(){
