@@ -19,9 +19,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('rumors', this.props.rumors);
-    console.log('messages', this.props.messages);
-
     return (
 
       <div id="app">

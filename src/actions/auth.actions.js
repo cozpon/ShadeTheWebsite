@@ -76,7 +76,6 @@ export const forgotPassword = (userEmail) => {
   return (dispatch) => {
     return Axios.post(forgot, userEmail)
     .then((response) => {
-      console.log(response, "RESPONSE DATA");
       dispatch({
         type: FORGOT_PASS,
         userDetails: response.data

@@ -9,7 +9,7 @@ class termsOfService extends Component {
       return(
         <div className="terms-container">
           <div id="terms">
-            Ownership of Application; Agreement to Terms of Use These Terms and Conditions of Use (the "Terms of Use") apply to the Shadee mobile app, and all associated sites linked to www.shadeeapp.com by the Backyard Boiz, its subsidiaries and affiliates, including the Backyard Boiz sites around the world (collectively, the "App"). The App is the property of ByardBoiZ Inc. ("ByardBoiZ") and its licensors.
+Ownership of Application; Agreement to Terms of Use These Terms and Conditions of Use (the "Terms of Use") apply to the Shadee mobile app, and all associated sites linked to www.shadeeapp.com by the Backyard Boiz, its subsidiaries and affiliates, including the Backyard Boiz sites around the world (collectively, the "App"). The App is the property of ByardBoiZ Inc. ("ByardBoiZ") and its licensors.
 
 BY USING THE APP, YOU AGREE TO THESE TERMS OF USE; IF YOU DO NOT AGREE, DO NOT USE THE APP.
 

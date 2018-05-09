@@ -1,4 +1,4 @@
-import { LOAD_MESSAGES} from '../actions/message.actions';
+import { LOAD_MESSAGES } from '../actions/message.actions';
 const initialState = [];
 
 const messageList = (state = initialState, action) => {

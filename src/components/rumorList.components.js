@@ -2,7 +2,6 @@ import React from 'react';
 import Rumor from'./rumor.components';
 
 const RumorList = ({rumors}) => {
-  console.log(rumors, "COMPONENTS");
   return (
 
     <div className="rumor-list">
