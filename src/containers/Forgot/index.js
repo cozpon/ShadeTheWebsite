@@ -54,13 +54,17 @@ class Forgot extends Component {
         }, 5500) // 5 seconds
       }
 
-    if(redirectToLogin) { return( <Redirect to={`/`}/> ) }
+    if(redirectToLogin) {
+      return(
+        <Redirect to={`/`}/>
+      )
+    }
     // after delay of 5 seconds, this activates and redirects you to login
     // very hacky code, but it works!
 
     return(
       <div id="login-container">
-            <div>
+        <div>
           <ToastContainer />
         </div>
         <h2>Forgot Password</h2>
