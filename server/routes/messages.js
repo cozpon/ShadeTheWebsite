@@ -74,7 +74,7 @@ router.get('/', (req, res) => {
   })
   .catch((err) => {
     console.log(err);
-  })
+  });
 });
 
 router.post('/', upload.array('upl', 1), (req, res) => {
@@ -97,7 +97,7 @@ router.post('/', upload.array('upl', 1), (req, res) => {
       .then((foundMessage) => {
         console.log(foundMessage);
         return res.json(foundMessage);
-      })
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -119,7 +119,7 @@ router.post('/', upload.array('upl', 1), (req, res) => {
       .then((foundMessage) => {
         console.log('foundMessage', foundMessage);
         return res.json(foundMessage);
-      })
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -166,13 +166,13 @@ router.put('/:id', (req, res) => {
         })
         .then((foundMessage) => {
           return res.json(foundMessage);
-        })
+        });
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
     }
-  })
+  });
 });
 
 router.put('/:id/vote', (req, res) => {
@@ -202,8 +202,8 @@ router.put('/:id/vote', (req, res) => {
             })
             .then((extraMessage) => {
               return res.json(extraMessage);
-            })
-          })
+            });
+          });
         }else{
           return Message.findById(id, {
             include: [
@@ -214,9 +214,9 @@ router.put('/:id/vote', (req, res) => {
           })
           .then((finalMessage) => {
             return res.json(finalMessage);
-          })
+          });
         }
-      })
+      });
     }else if(data.vote === 'down'){
       return message.update({
         points: Number(message.points) - Number(data.amount)
@@ -239,8 +239,8 @@ router.put('/:id/vote', (req, res) => {
             })
             .then((basicMessage) => {
               return res.json(basicMessage);
-            })
-          })
+            });
+          });
         }else{
           return Message.findById(id, {
             include: [
@@ -251,9 +251,9 @@ router.put('/:id/vote', (req, res) => {
           })
           .then((finalMessage) => {
             return res.json(finalMessage);
-          })
+          });
         }
-      })
+      });
     }
   })
   .catch((err) => {
@@ -277,7 +277,7 @@ router.put('/:id/inappropriate', (req, res) => {
       })
       .then(message => {
         return res.json(message);
-      })
+      });
     }else if((message.flag_two === null) && (message.flag_one != userId)){
       return message.update({
         offensive : (message.offensive + 1),
@@ -288,7 +288,7 @@ router.put('/:id/inappropriate', (req, res) => {
       })
       .then(message => {
         return res.json(message);
-      })
+      });
     }else if((message.flag_three === null) && (message.flag_two != userId) && (message.flag_one != userId)){
       return message.update({
         offensive : (message.offensive + 1),
@@ -299,7 +299,7 @@ router.put('/:id/inappropriate', (req, res) => {
       })
       .then(message => {
         return res.json(message);
-      })
+      });
     }
   })
   .catch((err) => {
@@ -318,7 +318,7 @@ router.delete('/:id', (req, res) => {
     })
     .then(message => {
       return res.json(message);
-    })
+    });
   })
   .catch((err) => {
     console.log(err);

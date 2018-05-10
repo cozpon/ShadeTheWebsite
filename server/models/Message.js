@@ -28,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
       foreignKey: 'status_id',
       as: 'message_status'
     });
-  }
+  };
 
   return Message;
-}
+};

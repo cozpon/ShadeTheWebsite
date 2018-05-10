@@ -35,19 +35,19 @@ router.post('/', (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-    })
-  })
-})
+    });
+  });
+});
 
 router.put('/:id', (req, res) => {
-
+  console.log(req.body, "POINTS");
   let points = req.body.points;
   let id = req.body.id;
   if(points===0){
     return Rumor.findById(id)
     .then((rumor) => {
       return rumor.update({
-        points: parseInt(rumor.points,10)-1
+        points: parseInt(rumor.points, 10)-1
       }, {
         returning: true,
         plain: true
@@ -62,14 +62,14 @@ router.put('/:id', (req, res) => {
         })
         .then((foundRumor) => {
           return res.json(foundRumor);
-        })
-      })
+        });
+      });
     });
   }else{
     return Rumor.findById(id)
     .then((rumor) => {
       return rumor.update({
-        points: parseInt(rumor.points,10)+1
+        points: parseInt(rumor.points, 10)+1
       }, {
         returning: true,
         plain: true
@@ -84,10 +84,62 @@ router.put('/:id', (req, res) => {
         })
         .then((newRumor) => {
           return res.json(newRumor);
-        })
-      })
+        });
+      });
     });
   }
 });
+
+
+
+
+router.put('/:id/inappropriate', (req, res) => {
+  console.log(req.body, "REQ");
+  let userId = req.body.user;
+  let id = req.body.id;
+  console.log(id, "ID");
+  console.log(userId, "USERID");
+  return Rumor.findById(id)
+  .then(rumor => {
+    if(rumor.flag_one === null){
+      return rumor.update({
+        offensive : (rumor.offensive + 1),
+        flag_one : userId
+      }, {
+        returning: true,
+        plain: true
+      })
+      .then(rumor => {
+        return res.json(rumor);
+      });
+    }else if((rumor.flag_two === null) && (rumor.flag_one != userId)){
+      return rumor.update({
+        offensive : (rumor.offensive + 1),
+        flag_two : userId
+      }, {
+        returning: true,
+        plain: true
+      })
+      .then(rumor => {
+        return res.json(rumor);
+      });
+    }else if((rumor.flag_three === null) && (rumor.flag_two != userId) && (rumor.flag_one != userId)){
+      return rumor.update({
+        offensive : (rumor.offensive + 1),
+        flag_three : userId
+      }, {
+        returning: true,
+        plain: true
+      })
+      .then(rumor => {
+        return res.json(rumor);
+      });
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+});
+
 
 module.exports = router;
