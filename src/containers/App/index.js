@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadMessages } from '../../actions/message.actions';
 import { loadRumors } from '../../actions/rumors.actions';
-import Messages from '../../components/message.components';
+import MessageList from '../../components/messageList.components';
 import RumorList from '../../components/rumorList.components';
 
 class App extends Component {
@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   render() {
+            console.log(this.props, "PROPS");
     return (
 
       <div id="app">
@@ -36,7 +37,8 @@ class App extends Component {
 
       <div className="message-list">
         messages
-          <Messages messages={this.props.messages}/>
+
+          <MessageList messages={this.props.messages}/>
       </div>
      </div>
     );

@@ -2,46 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { flagMessage } from '../actions/message.actions';
 
-class Message extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render(){
+const Message = ({id, points, media, shader, victim, status }) => {
     return(
       <div>
         <div className='message-text'>
-          {this.props.points} upvotes. This shade is so {this.props.status}.
+          { points } upvotes. This shade is so { status }.
         </div>
 
         <div className='message-shader'>
-          {this.props.shader} threw shade @ {this.props.victim}
+          { shader } threw shade @ { victim }
         </div>
 
         <div className='message-body'>
-          {this.props.body}</div>
-
-            <button
-              onClick={(e) => { e.preventDefault();
-                this.props.flagMessage(this.props.id, this.props.currentUser);
-              }}
-              type="submit">
-            Flag Message
-            </button>
+          { media }</div>
 
       </div>
     )
-  }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    flagMessage: (id, currentUser) => {
-      dispatch(flagMessage(id, currentUser));
-    }
-  }
-}
 
-export default connect(null, mapDispatchToProps)(Message);
+export default Message;

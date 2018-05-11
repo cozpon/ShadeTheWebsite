@@ -8,13 +8,15 @@ const MessageList = ({messages}) => {
     <div className="message-list">
     {
       messages.map((message) => {
-        console.log(message.media);
+        console.log(message.message_status.name);
         return (
           <Message
-          body={message.body}
-          user={message.user.username}
-          media={message.media}
           key={message.id}
+          points={message.points}
+          media={message.media}
+          shader={message.shader.username}
+          victim={message.shader.username}
+          status={message.message_status.name}
           />
         );
       })

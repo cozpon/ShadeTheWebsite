@@ -8,43 +8,43 @@ const User = db.user;
 const Op = require('Sequelize').Op;
 
 router.get('/', (req, res) => {
+  console.log(req.user);
   return Rumor.findAll({
     where: {
       deletedAt: null,
       offensive: {
         [Op.lte]: 3
-      },
-      [Op.or]: [
-        {
-          flag_one: {
-            //note: this will be req.user.id, but for accessing the API when we're not logged in, I'm leaving 1 as a placeholder.
-            [Op.ne]: req.user.id
-          }
-        },
-        {
-          flag_one: null
-        }
-      ],
-      [Op.or]: [
-        {
-          flag_two: {
-            [Op.ne]: req.user.id
-          }
-        },
-        {
-          flag_two: null
-        }
-      ],
-      [Op.or]: [
-        {
-          flag_three: {
-            [Op.ne]: req.user.id
-          }
-        },
-        {
-          flag_three: null
-        }
-      ],
+      }
+      // [Op.or]: [
+      //   {
+      //     flag_one: {
+      //       [Op.ne]: req.user.id
+      //     }
+      //   },
+      //   {
+      //     flag_one: null
+      //   }
+      // ],
+      // [Op.or]: [
+      //   {
+      //     flag_two: {
+      //       [Op.ne]: req.user.id
+      //     }
+      //   },
+      //   {
+      //     flag_two: null
+      //   }
+      // ],
+      // [Op.or]: [
+      //   {
+      //     flag_three: {
+      //       [Op.ne]: req.user.id
+      //     }
+      //   },
+      //   {
+      //     flag_three: null
+      //   }
+      // ],
     },
     order: [['points', 'DESC']],
     include: [
