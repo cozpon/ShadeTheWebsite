@@ -5,8 +5,47 @@ const db = require('../models');
 const Rumor = db.rumor;
 const User = db.user;
 
+const Op = require('Sequelize').Op;
+
 router.get('/', (req, res) => {
   return Rumor.findAll({
+    where: {
+      deletedAt: null,
+      offensive: {
+        [Op.lte]: 3
+      },
+      [Op.or]: [
+        {
+          flag_one: {
+            //note: this will be req.user.id, but for accessing the API when we're not logged in, I'm leaving 1 as a placeholder.
+            [Op.ne]: req.user.id
+          }
+        },
+        {
+          flag_one: null
+        }
+      ],
+      [Op.or]: [
+        {
+          flag_two: {
+            [Op.ne]: req.user.id
+          }
+        },
+        {
+          flag_two: null
+        }
+      ],
+      [Op.or]: [
+        {
+          flag_three: {
+            [Op.ne]: req.user.id
+          }
+        },
+        {
+          flag_three: null
+        }
+      ],
+    },
     order: [['points', 'DESC']],
     include: [
       { model: User, as: 'user',
@@ -18,6 +57,7 @@ router.get('/', (req, res) => {
     return res.json(rumors);
   });
 });
+
 
 router.post('/', (req, res) => {
   let data = req.body;
@@ -40,7 +80,6 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  console.log(req.body, "POINTS");
   let points = req.body.points;
   let id = req.body.id;
   if(points===0){
@@ -91,14 +130,9 @@ router.put('/:id', (req, res) => {
 });
 
 
-
-
 router.put('/:id/inappropriate', (req, res) => {
-  console.log(req.body, "REQ");
   let userId = req.body.user;
   let id = req.body.id;
-  console.log(id, "ID");
-  console.log(userId, "USERID");
   return Rumor.findById(id)
   .then(rumor => {
     if(rumor.flag_one === null){

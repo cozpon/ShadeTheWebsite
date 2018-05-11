@@ -7,7 +7,8 @@ module.exports = function (sequelize, DataTypes) {
     offensive: {type: DataTypes.INTEGER, defaultValue: 0},
     flag_one: {type: DataTypes.INTEGER, defaultValue: null},
     flag_two: {type: DataTypes.INTEGER, defaultValue: null},
-    flag_three: {type: DataTypes.INTEGER, defaultValue: null}
+    flag_three: {type: DataTypes.INTEGER, defaultValue: null},
+    deletedAt: {type: DataTypes.DATEONLY, defaultValue: null}
   }, {
     tableName: 'rumors'
   });

@@ -15,8 +15,7 @@ const User = db.user;
 const Status = db.status;
 
 
-router.post('/login',
-  passport.authenticate('local'), (req, res) => {
+router.post('/login', passport.authenticate('local'), (req, res) => {
   return res.json({
     id: req.user.id,
     username: req.user.username,
