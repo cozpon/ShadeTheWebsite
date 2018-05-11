@@ -1,47 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { flagMessage } from '../actions/message.actions';
+import { flagMessage,  } from '../actions/message.actions';
+import ReactPlayer from 'react-player';
 
-class Message extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+const Message = ({id, points, media, shader, victim, status }) => {
+  let url =  `https://d4fzdcljjl4gc.cloudfront.net/${ media }`;
+  return(
+    <div>
+      <div className='message-text'>
+        { points } upvotes. This shade is so { status }.
+      </div>
 
-  render(){
-    return(
-      <div>
-        <div className='message-text'>
-          {this.props.points} upvotes. This shade is so {this.props.status}.
-        </div>
+      <div className='message-shader'>
+        { shader } threw shade @ { victim }
+      </div>
 
-        <div className='message-shader'>
-          {this.props.shader} threw shade @ {this.props.victim}
-        </div>
+      <div className='message-body'>
 
-        <div className='message-body'>
-          {this.props.body}</div>
-
-            <button
-              onClick={(e) => { e.preventDefault();
-                this.props.flagMessage(this.props.id, this.props.currentUser);
-              }}
-              type="submit">
-            Flag Message
-            </button>
+          <ReactPlayer
+            url={ url }
+            controls={ true }
+            width='50%'
+            height='100%'
+          />
 
       </div>
-    )
-  }
+
+    </div>
+  )
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    flagMessage: (id, currentUser) => {
-      dispatch(flagMessage(id, currentUser));
-    }
-  }
-}
 
-export default connect(null, mapDispatchToProps)(Message);
+export default Message;

@@ -3,7 +3,6 @@ import Rumor from'./rumor.components';
 
 const RumorList = ({rumors}) => {
   return (
-
     <div className="rumor-list">
     {
       rumors.map((rumor) => {
