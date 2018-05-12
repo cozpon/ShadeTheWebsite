@@ -55,3 +55,4 @@ buck-out/
 # config
 /server/_lib/
 /server/config/
+/src/lib/

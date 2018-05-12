@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadMessages } from '../../actions/message.actions';
 import { ToastContainer, toast } from "react-toastify";
+import { loadMessages } from '../../actions/message.actions';
+import MessageList from '../../components/messageList.components';
 
 class User extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [],
+      data: '',
+      blur: false
+    };
+  }
 
   componentDidMount(){
+
+    this.props.loadMessages();
+
     if( localStorage.emailChange ) {
       toast.success(`Success! Email Changed!`,
       {
