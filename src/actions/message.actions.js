@@ -36,31 +36,31 @@ export const loadMessage = (id) => {
         message: message.data
       });
     });
-  }
-}
+  };
+};
 
 export const flagMessage = (id, user) => {
   return function(dispatch){
     return Axios.put(`${url}messages/${id}/inappropriate`, user)
     .then(message => {
-      console.log('FLAG', message.data)
+      console.log('FLAG', message.data);
       dispatch({
         type: FLAG_MESSAGE,
         message: message.data
       });
     });
-  }
-}
+  };
+};
 
 export const voteOnMessage = (vote) => {
   return function(dispatch){
     return Axios.put(`${url}messages/${vote.id}/vote`, vote)
     .then(message => {
-      console.log('ACTION', message.data)
+      console.log('ACTION', message.data);
       dispatch({
         type: VOTE_ON_MESSAGE,
         message: message.data
       });
     });
-  }
-}
+  };
+};

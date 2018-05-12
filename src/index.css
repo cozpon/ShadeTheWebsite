@@ -110,3 +110,7 @@ h2 {
   margin-left: 200px;
 }
 
+.rumor-list {
+  background-color: pink;
+  text-align: right;
+}
