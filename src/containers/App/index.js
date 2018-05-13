@@ -22,7 +22,7 @@ class App extends Component {
             console.log(this.props, "PROPS");
     return (
 
-      <div id="app">
+      <div id="main">
         main desktop react app for SHADE baby! <br /><br />
         this gonna be where the feed is I guess?
         <br />
@@ -31,15 +31,14 @@ class App extends Component {
 
       <div className="rumor-list">
         rumors
-          <RumorList rumors={this.props.rumors}/>
-
+        <RumorList rumors={this.props.rumors}/>
       </div>
 
       <div className="message-list">
         messages
-
-          <MessageList messages={this.props.messages}/>
+        <MessageList messages={this.props.messages}/>
       </div>
+
      </div>
     );
   }

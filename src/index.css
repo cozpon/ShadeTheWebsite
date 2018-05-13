@@ -19,6 +19,35 @@ h2 {
   font-size: 80px;
 }
 
+/*------ MAIN FEED ----------*/
+
+#main {
+  display: grid;
+  background-color: orange;
+  grid-template-columns: 500px 500px 50px 300px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header header header"
+    "message message . rumor"
+    "footer footer footer footer";
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.rumor-list {
+  background-color: pink;
+/*  text-align: right;*/
+  grid-area: rumor;
+}
+
+.message-list {
+  background-color: green;
+/*  text-align: left;*/
+  grid-area: message;
+}
+
+/*-----HEADER---------*/
+
 #logo {
   background-image: url("/images/logo.png");
   background-repeat: no-repeat;
@@ -54,6 +83,7 @@ h2 {
 
 
 /*----------------login-------*/
+
 #login-container {
   position: relative;
   text-align: center;
@@ -111,15 +141,4 @@ h2 {
 }
 
 
-.player-wrapper {
-  display:none;
-  position: relative;
-  padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
-}
 
-.react-player {
-  display:none;
-  position: absolute;
-  top: 0;
-  left: 0;
-}

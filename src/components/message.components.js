@@ -20,7 +20,7 @@ const Message = ({id, points, media, shader, victim, status }) => {
           <ReactPlayer
             url={ url }
             controls={ true }
-            width='50%'
+            width='30%'
             height='100%'
           />
 

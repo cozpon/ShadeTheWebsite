@@ -8,43 +8,27 @@ const User = db.user;
 const Op = require('Sequelize').Op;
 
 router.get('/', (req, res) => {
-  console.log(req.user);
   return Rumor.findAll({
     where: {
+      // not deleted
       deletedAt: null,
+      // and less than 3 offensive points
       offensive: {
-        [Op.lte]: 3
+        [Op.lt]: 3
+      },
+      // and any of the flags (1, 2, or 3) were not made by the current user
+      // flag_one != req.user.id
+      // flag_two != req.user.id
+      // flag_three != req.user.id
+      flag_one: {
+        [Op.ne]: req.user.id
+      },
+      flag_two: {
+        [Op.ne]: req.user.id
+      },
+      flag_three: {
+        [Op.ne]: req.user.id
       }
-      // [Op.or]: [
-      //   {
-      //     flag_one: {
-      //       [Op.ne]: req.user.id
-      //     }
-      //   },
-      //   {
-      //     flag_one: null
-      //   }
-      // ],
-      // [Op.or]: [
-      //   {
-      //     flag_two: {
-      //       [Op.ne]: req.user.id
-      //     }
-      //   },
-      //   {
-      //     flag_two: null
-      //   }
-      // ],
-      // [Op.or]: [
-      //   {
-      //     flag_three: {
-      //       [Op.ne]: req.user.id
-      //     }
-      //   },
-      //   {
-      //     flag_three: null
-      //   }
-      // ],
     },
     order: [['points', 'DESC']],
     include: [
@@ -135,7 +119,7 @@ router.put('/:id/inappropriate', (req, res) => {
   let id = req.body.id;
   return Rumor.findById(id)
   .then(rumor => {
-    if(rumor.flag_one === null){
+    if(rumor.flag_one === 0){
       return rumor.update({
         offensive : (rumor.offensive + 1),
         flag_one : userId
@@ -146,7 +130,7 @@ router.put('/:id/inappropriate', (req, res) => {
       .then(rumor => {
         return res.json(rumor);
       });
-    }else if((rumor.flag_two === null) && (rumor.flag_one != userId)){
+    }else if((rumor.flag_two === 0) && (rumor.flag_one != userId)){
       return rumor.update({
         offensive : (rumor.offensive + 1),
         flag_two : userId
@@ -157,7 +141,7 @@ router.put('/:id/inappropriate', (req, res) => {
       .then(rumor => {
         return res.json(rumor);
       });
-    }else if((rumor.flag_three === null) && (rumor.flag_two != userId) && (rumor.flag_one != userId)){
+    }else if((rumor.flag_three === 0) && (rumor.flag_two != userId) && (rumor.flag_one != userId)){
       return rumor.update({
         offensive : (rumor.offensive + 1),
         flag_three : userId
